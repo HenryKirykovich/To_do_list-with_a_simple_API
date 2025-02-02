@@ -26,7 +26,6 @@ authForm.addEventListener("submit", async(event) => {
     }
 });
 
-
 // Register function
 async function registerUser(username, password) {
     try {
@@ -39,7 +38,7 @@ async function registerUser(username, password) {
         const data = await response.json();
 
         if (response.status === 201) {
-            alert("🎉 Registration successful! Now please log in.");
+            alert("Registration successful! Now please log in.");
 
             // Automatically clear input fields
             usernameInput.value = "";
@@ -105,15 +104,15 @@ async function fetchTodos() {
     }
 }
 
-
 // Display todos
 function displayTodos(todos) {
     const todoList = document.getElementById("todo-list");
     todoList.innerHTML = ""; // Clear old items
-
+    var counter = 0;
     todos.forEach(todo => {
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<span><strong>${todo.title}</strong>: ${todo.description}</span>`;
+
+        listItem.innerHTML = `<span><strong>${++counter}. ${todo.title}</strong>: ${todo.description}</span>`;
 
         // Create a container for buttons
         const buttonContainer = document.createElement("div");
@@ -155,14 +154,14 @@ async function markTodoComplete(todoId) {
     const authToken = getCookie("authToken");
 
     if (!authToken) {
-        alert("❌ You are not authenticated. Please log in again.");
+        alert("You are not authenticated. Please log in again.");
         return;
     }
 
     console.log(`🔍 Marking Task ${todoId} as complete`);
 
     try {
-        // ✅ Step 1: Mark as Complete
+        // Step 1: Mark as Complete
         const updateResponse = await fetch(`http://localhost:3000/todos/${todoId}`, {
             method: "PUT",
             headers: {
@@ -170,43 +169,41 @@ async function markTodoComplete(todoId) {
                 "Authorization": `Bearer ${authToken}`
             },
             body: JSON.stringify({
-                completed: true // ✅ Only update completion status
+                completed: true // Only update completion status
             })
         });
 
         if (!updateResponse.ok) {
-            alert("❌ Failed to update task.");
+            alert("Failed to update task.");
             return;
         }
 
-        alert("✅ Task marked as complete!");
+        alert("Task marked as complete!");
 
-        // ✅ Step 2: Delete the Task After Completing
+        // Step 2: Delete the Task After Completing
         const deleteResponse = await fetch(`http://localhost:3000/todos/${todoId}`, {
             method: "DELETE",
             headers: { "Authorization": `Bearer ${authToken}` }
         });
 
         if (deleteResponse.ok) {
-            console.log(`🗑️ Task ${todoId} deleted.`);
-            fetchTodos(); // ✅ Refresh the list
+            console.log(`Task ${todoId} deleted.`);
+            fetchTodos(); // Refresh the list
         } else {
-            alert("❌ Task completed, but failed to delete.");
+            alert("Task completed, but failed to delete.");
         }
     } catch (error) {
-        console.error("❌ Error updating/deleting todo:", error);
-        alert("❌ An error occurred.");
+        console.error(" Error updating/deleting todo:", error);
+        alert("An error occurred.");
     }
 }
-
-
 
 function editTodo(todo) {
     const newTitle = prompt("Edit Title:", todo.title);
     const newDescription = prompt("Edit Description:", todo.description);
 
     if (!newTitle || !newDescription) {
-        alert("❌ Both title and description are required!");
+        alert("Both title and description are required!");
         return;
     }
 
@@ -217,7 +214,7 @@ async function updateTodo(todoId, title, description) {
     const authToken = getCookie("authToken");
 
     if (!authToken) {
-        alert("❌ You are not authenticated. Please log in again.");
+        alert("You are not authenticated. Please log in again.");
         return;
     }
 
@@ -235,15 +232,15 @@ async function updateTodo(todoId, title, description) {
         });
 
         if (response.ok) {
-            alert("✅ Task updated successfully!");
-            fetchTodos(); // ✅ Refresh list after editing
+            alert("Task updated successfully!");
+            fetchTodos(); // Refresh list after editing
         } else {
             const errorText = await response.text();
-            console.error("❌ Update failed:", errorText);
-            alert("❌ Failed to update todo.");
+            console.error("Update failed:", errorText);
+            alert("Failed to update todo.");
         }
     } catch (error) {
-        console.error("❌ Error updating todo:", error);
+        console.error("Error updating todo:", error);
     }
 }
 
@@ -255,10 +252,6 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(";").shift();
     return null;
 }
-
-
-
-
 
 // Delete todo
 async function deleteTodo(todoId) {
