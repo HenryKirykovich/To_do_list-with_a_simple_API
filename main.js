@@ -5,6 +5,14 @@ const passwordInput = document.getElementById("password");
 const todoSection = document.getElementById("todo-section");
 const todoList = document.getElementById("todo-list");
 
+// Get token from cookies
+function getCookie(name) {
+    const value = `; ${document.cookie}`; // add ; sign easily separating in the future
+    const parts = value.split(`; ${name}=`); // splitting on the parts
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+}
+
 // Listen for form submission (Registration or Login)
 authForm.addEventListener("submit", async(event) => {
     event.preventDefault(); // Prevent page refresh
@@ -158,7 +166,7 @@ async function markTodoComplete(todoId) {
         return;
     }
 
-    console.log(`🔍 Marking Task ${todoId} as complete`);
+    console.log(`Marking Task ${todoId} as complete`);
 
     try {
         // Step 1: Mark as Complete
@@ -197,6 +205,7 @@ async function markTodoComplete(todoId) {
         alert("An error occurred.");
     }
 }
+
 
 function editTodo(todo) {
     const newTitle = prompt("Edit Title:", todo.title);
@@ -242,15 +251,6 @@ async function updateTodo(todoId, title, description) {
     } catch (error) {
         console.error("Error updating todo:", error);
     }
-}
-
-
-// Get token from cookies
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-    return null;
 }
 
 // Delete todo
