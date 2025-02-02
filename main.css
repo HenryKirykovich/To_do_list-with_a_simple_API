@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@200;300;400;700&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #edf2f8;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    line-height: 1.7;
+    font-size: 14px;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* Form Styling */
+
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.container>.btn,
+.container>.btn2 {
+    width: 60px;
+    /* Ensure buttons have same width */
+    height: 40px;
+    /* Uniform height */
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #a8c3d0;
+    color: white;
+}
+
+
+/* Todo Section */
+
+#todo-section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Add task container */
+
+.todo-container {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+}
+
+#add-todo {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    background-color: #72bc83;
+    color: white;
+    font-size: 12px;
+    min-width: 90px;
+    text-Align: center;
+}
+
+
+/* Frame around todo list */
+
+.task-frame {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    background: #ffffff;
+}
+
+
+/* Todo List */
+
+#todo-list {
+    /* list-style-type: none; */
+    padding: 10px;
+    /* width: 100%; */
+    max-width: 1fr;
+}
+
+
+/* Frame around each todo task */
+
+#todo-list li {
+    background: #f9f9f9;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 6px;
+    border: 2px solid #d37c7c;
+    display: flex;
+    flex-direction: row;
+    /* Keep text & buttons in the same row */
+    justify-content: space-between;
+    /* Keep spacing */
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Wrap buttons inside a flex container */
+
+.todo-buttons {
+    display: flex;
+    gap: 5px;
+    /* Add spacing between buttons */
+}
+
+
+/* Logout Button */
+
+#logout-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #000;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#logout-btn:hover {
+    background-color: #333;
+}
+
+
+/* Fix button sizing */
+
+.complete-btn,
+.edit-btn,
+.delete-btn,
+.btn,
+.btn2 {
+    min-width: 90px;
+    /* Ensure buttons have same width */
+    height: 30px;
+    /* Uniform height */
+    font-size: 12px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+/* Button Colors */
+
+.complete-btn {
+    background-color: #72bc83;
+    color: white;
+}
+
+.edit-btn {
+    background-color: #d9a0d6;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #a8c3d0;
+    color: white;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+
+    <title>Todo List App</title>
+</head>
+
+<body>
+    <h2>Welcome to your 'TODO list'</h2>
+
+    <!-- Registration / Login Form -->
+    <form id="my-form">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <section class="container">
+            <input class="btn" type="submit" value="Sign in">
+            <input class="btn2" type="submit" value="Register">
+        </section>
+    </form>
+
+    <!-- Todo List Section (Hidden Initially) -->
+    <div id="todo-section" style="display: none;">
+        <div class="todo-container">
+            <h3>Add a New Todo</h3>
+            <form id="todo-form">
+                <input type="text" id="todo-title" placeholder="Todo Title" required>
+                <input type="text" id="todo-description" placeholder="Todo Description" required>
+                <button type="button" id="add-todo">Add Todo</button>
+            </form>
+        </div>
+
+        <div class="task-frame">
+            <h3>Your Todo List</h3>
+            <ul id="todo-list"></ul>
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <button type="button" id="logout-btn">Logout</button>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
