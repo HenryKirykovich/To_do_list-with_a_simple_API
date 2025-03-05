@@ -1,0 +1,1 @@
+A minimalist to-do list application with a basic API for managing tasks. This project demonstrates a simple form-based UI and basic API implementation for CRUD (Create, Read, Update, Delete) operations.
